@@ -24,10 +24,10 @@ contract MaveNFTs is ERC721Enumerable, Ownable {
     IWhitelist whitelist;
 
     // Track if presale has started or not
-    uint256 public preSaleStarted;
+    bool public presaleStarted;
 
     // Time when presale will end
-    uint256 public preSaleEnded;
+    uint256 public presaleEnded;
 
     modifier onlyWhenNotPaused {
         require(!_paused, "Contract is currently paused.");
@@ -43,15 +43,15 @@ contract MaveNFTs is ERC721Enumerable, Ownable {
     }
 
     // start pre sale for whitelisted addresses
-    function startPreSale() public onlyOwner {
-        preSaleStarted = true;
-        //  set preSaleEnded time as current timestamp + 5 minutes.
-        preSaleEnded = block.timestamp + 5 minutes;
+    function startPresale() public onlyOwner {
+        presaleStarted = true;
+        //  set presaleEnded time as current timestamp + 5 minutes.
+        presaleEnded = block.timestamp + 5 minutes;
     }
 
-    // preSaleMint allows a user to mint one NFT per transaction during presale
-    function preSaleMint() public payable onlyWhenNotPaused {
-        require(preSaleStarted && block.timestamp < preSaleEnded, "Pre sale is currently not running.");
+    // presaleMint allows a user to mint one NFT per transaction during presale
+    function presaleMint() public payable onlyWhenNotPaused {
+        require(presaleStarted && block.timestamp < presaleEnded, "Pre sale is currently not running.");
         require(whitelist.whitelistedAddresses(msg.sender), "You are not on the whitelist.");
         require(tokenIds < maxTokenIds, "Exceeded maximum Mave NFTs supply.");
         require(msg.value >= _price, "Ether sent is not currect.");
