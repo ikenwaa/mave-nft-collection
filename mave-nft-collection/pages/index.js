@@ -204,7 +204,7 @@ export default function Home() {
   const getProviderOrSigner = async (needSigner = false) => {
     // Connect Metamask or other ethereum wallet
     const provider = await web3ModalRef.current.connect();
-    const web3Provider = new providers.Web3Provider(provider);
+    const web3Provider = new provider.Web3Provider(provider);
 
     // Prompt user to switch to Rinkeby network if not connected with Rinkeby
     const { chainId } = await web3Provider.getNetwork();
