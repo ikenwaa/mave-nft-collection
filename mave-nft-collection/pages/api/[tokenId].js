@@ -9,6 +9,6 @@ export default function handler(req, res) {
     res.status(200).json({
         name: "Mave Dev #" + tokenId,
         description: "Mave Dev NFT is a collection of NFTs for the Mave ecosystem.",
-        image: image_url + tokenId + ".svg"
+        image: img_url + tokenId + ".svg"
     });
 }
