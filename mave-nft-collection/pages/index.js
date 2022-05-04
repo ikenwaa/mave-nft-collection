@@ -331,7 +331,7 @@ export default function Home() {
         </div>
       </div>
       <footer className={styles.footer}>
-        Made with<span>&#10084;</span>by&nbsp;<a href="https://www.github.com/ikenwaa" target="_blank" rel="noreferrer">Augustine Ikenwa</a>
+        Made with&nbsp;<span>&#10084;</span>&nbsp;by&nbsp;<a href="https://www.github.com/ikenwaa" target="_blank" rel="noreferrer">Augustine Ikenwa</a>
       </footer>
     </div>
   );
