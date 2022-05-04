@@ -279,7 +279,7 @@ export default function Home() {
     if (!presaleStarted) {
       return (
         <div>
-          <div className={styles.description}>Presale hasn't started!</div>
+          <div className={styles.description}>Presale hasn&apos;t started!</div>
         </div>
       );
     }
@@ -319,7 +319,7 @@ export default function Home() {
         <div>
           <h1>Welcome to Mave Devs NFT Collection!</h1>
           <div>
-            It's an NFT collection for Mave Devs customers.
+            It&apos;s an NFT collection for Mave Devs customers.
           </div>
           <div className={styles.description}>
             {tokenIdsMinted}/20 have been minted
