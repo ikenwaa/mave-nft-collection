@@ -16,7 +16,7 @@
 }
 
 .footer a{
-  color: blue;
+  color: rgb(51, 0, 255);
 }
 
 .footer span {
@@ -42,7 +42,7 @@
 
 .button {
   border-radius: 4px;
-  background-color: blue;
+  background-color: rgb(117, 117, 243);
   border: none;
   color: #ffffff;
   font-size: 15px;

@@ -1,4 +1,4 @@
-import {Contract, provider, utils} from "ethers";
+import {Contract, providers, utils} from "ethers";
 import Head from 'next/head'
 import React, {useEffect, useRef, useState} from "react";
 import Web3Modal from "web3modal";
@@ -204,7 +204,7 @@ export default function Home() {
   const getProviderOrSigner = async (needSigner = false) => {
     // Connect Metamask or other ethereum wallet
     const provider = await web3ModalRef.current.connect();
-    const web3Provider = new provider.Web3Provider(provider);
+    const web3Provider = new providers.Web3Provider(provider);
 
     // Prompt user to switch to Rinkeby network if not connected with Rinkeby
     const { chainId } = await web3Provider.getNetwork();
@@ -234,7 +234,7 @@ export default function Home() {
       // Check if presale has started and ended
       const _presaleStarted = checkIfPresaleStarted();
       if (_presaleStarted) {
-        checkIfPresaleEnded
+        checkIfPresaleEnded();
       }
       getTokenIdsMinted();
 
@@ -248,6 +248,10 @@ export default function Home() {
           }
         }
       }, 5 * 1000)
+      // Interval to get the number of token minted every 5s
+      setInterval(async function () {
+        await getTokenIdsMinted();
+      }, 5 * 1000)
     }
   }, [walletConnected]);
 
@@ -256,7 +260,7 @@ export default function Home() {
     // If !walletConnected, return a button which allows users connect to dapp
     if(!walletConnected) {
       return (
-        <button onClick={walletConnected} className={styles.button}>
+        <button onClick={connectWallet} className={styles.button}>
           Connect your wallet
         </button>
       );
@@ -304,9 +308,9 @@ export default function Home() {
         <button className={styles.button} onClick={publicMint}>
           Public Mint 🚀
         </button>
-      )
+      );
     }
-  }
+  };
 
   return (
     <div>
